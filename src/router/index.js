@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
 const Index = () => import('../views/Index.vue');
+const EscapePlan = () => import('../views/EscapePlan/index.vue');
 
 const routes = [
   {
@@ -9,6 +10,14 @@ const routes = [
     component: Index,
     meta: {
       title: '海岛生存'
+    }
+  },
+  {
+    path: '/escape',
+    name: 'EscapePlan',
+    component: EscapePlan,
+    meta: {
+      title: '航海逃生计划'
     }
   }
 ];

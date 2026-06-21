@@ -1,8 +1,17 @@
 <template>
   <div class="island-container">
     <div class="island-header">
-      <h1>🏝️ 海岛生存</h1>
-      <p>在荒岛上建立你的生存基地</p>
+      <div style="display: flex; align-items: center; justify-content: space-between; width: 100%; max-width: 800px; margin: 0 auto;">
+        <div>
+          <h1>🏝️ 海岛生存</h1>
+          <p>在荒岛上建立你的生存基地</p>
+        </div>
+        <div class="header-nav">
+          <button class="nav-btn escape-btn" @click="goToEscape">
+            ⛵ 航海逃生计划
+          </button>
+        </div>
+      </div>
     </div>
     
     <div class="island-main">
@@ -134,7 +143,13 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
 import { ElMessage, ElMessageBox } from 'element-plus';
+
+const router = useRouter();
+const goToEscape = () => {
+  router.push('/escape');
+};
 
 const resources = ref({
   food: 100,
@@ -326,6 +341,35 @@ onMounted(() => {
   font-size: 18px;
   margin: 0;
   opacity: 0.9;
+}
+
+.header-nav {
+  display: flex;
+  gap: 12px;
+}
+
+.nav-btn {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.escape-btn {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(245, 87, 108, 0.4);
+}
+
+.escape-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(245, 87, 108, 0.5);
 }
 
 .island-main {
